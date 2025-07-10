@@ -1,0 +1,416 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --edit-primary: #3498db;
+  --edit-primary-dark: #2980b9;
+  --edit-secondary: #2ecc71;
+  --edit-secondary-dark: #27ae60;
+  --edit-accent: #f39c12;
+  --edit-accent-light: #fff8eb;
+  --edit-text: #2c3e50;
+  --edit-label: #5a6a7a;
+  --edit-border: #d1dbe5;
+  --edit-input-bg: #ffffff;
+  --edit-section-bg: #f7f9fc;
+  --edit-section-bg-alt: #fdfdfe;
+  --edit-danger: #e74c3c;
+  --edit-light-grey: #ecf0f1;
+  --edit-white: #ffffff;
+  --edit-shadow-light: rgba(44, 62, 80, 0.06);
+  --edit-shadow-medium: rgba(44, 62, 80, 0.1);
+  --edit-font-stack: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --edit-radius: 6px;
+  --edit-transition: 0.3s ease;
+}
+
+.editingRecipeContainer {
+  max-width: 1050px;
+  margin: 40px auto;
+  padding: 40px 50px;
+  font-family: var(--edit-font-stack);
+  color: var(--edit-text);
+  background: var(--edit-white);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px var(--edit-shadow-medium);
+  border: 1px solid var(--edit-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.editingRecipeContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--edit-primary),
+    var(--edit-secondary),
+    var(--edit-accent)
+  );
+}
+
+.editingRecipeHeader {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--edit-light-grey);
+}
+
+.editingRecipeHeader h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--edit-primary);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.editingRecipeFormGroup {
+  margin-bottom: 28px;
+}
+
+.editingRecipeFormGroup label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--edit-label);
+  font-size: 0.95rem;
+}
+
+.editingRecipeFormGroup input[type="text"],
+.editingRecipeFormGroup input[type="number"],
+.editingRecipeFormGroup input[type="url"],
+.editingRecipeFormGroup textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--edit-border);
+  border-radius: var(--edit-radius);
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color var(--edit-transition),
+    box-shadow var(--edit-transition);
+  background-color: var(--edit-input-bg);
+  color: var(--edit-text);
+  appearance: none;
+}
+
+.editingRecipeFormGroup input:focus,
+.editingRecipeFormGroup textarea:focus {
+  border-color: var(--edit-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.editingRecipeFormGroup textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.editingRecipeMainInfo,
+.editingRecipeImageSection,
+.editingRecipeDetailsColumns {
+  margin-bottom: 35px;
+}
+
+.editingRecipePillsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 25px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding: 25px;
+  background-color: var(--edit-section-bg);
+  border-radius: var(--edit-radius);
+  border: 1px solid var(--edit-border);
+}
+
+.editingRecipeFormGroup.pill-group {
+  flex: 1 1 180px;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.editingRecipeFormGroup.pill-group label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--edit-label);
+  margin-bottom: 6px;
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  background: var(--edit-section-bg);
+  padding: 0 5px;
+}
+
+.editingRecipeFormGroup.pill-group input {
+  text-align: left;
+  padding: 12px 15px;
+  font-weight: 500;
+  border: 1px solid var(--edit-border);
+  background-color: var(--edit-white);
+  color: var(--edit-text);
+  border-radius: var(--edit-radius);
+}
+
+.editingRecipeFormGroup.description-group {
+  padding: 25px;
+  background-color: var(--edit-section-bg-alt);
+  border-radius: var(--edit-radius);
+  border: 1px solid var(--edit-border);
+  border-left: 5px solid var(--edit-accent);
+  margin-top: 35px;
+}
+.editingRecipeFormGroup.description-group label {
+  color: var(--edit-accent);
+  font-size: 1rem;
+}
+.editingRecipeFormGroup.description-group textarea {
+  background-color: var(--edit-white);
+}
+
+.editingRecipeImageSection .editingRecipeFormGroup {
+  padding: 25px;
+  background-color: var(--edit-section-bg);
+  border-radius: var(--edit-radius);
+  border: 1px solid var(--edit-border);
+}
+
+.editingRecipeImagePreview {
+  width: 100%;
+  max-height: 450px;
+  min-height: 200px;
+  overflow: hidden;
+  border-radius: var(--edit-radius);
+  margin: 20px 0 0 0;
+  border: 1px dashed var(--edit-border);
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  transition: border-color var(--edit-transition);
+}
+.editingRecipeImagePreview:has(img) {
+  border: 1px solid var(--edit-border);
+  background-color: var(--edit-white);
+}
+
+.editingRecipeImagePreview img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.editingRecipeDetailsColumns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.editingRecipeIngredientsSection,
+.editingRecipeInstructionsSection {
+  flex: 1;
+}
+
+.editingRecipeIngredientsSection .editingRecipeFormGroup,
+.editingRecipeInstructionsSection .editingRecipeFormGroup {
+  padding: 30px;
+  border-radius: var(--edit-radius);
+  background-color: var(--edit-section-bg-alt);
+  border: 1px solid var(--edit-border);
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.editingRecipeIngredientsSection .editingRecipeFormGroup {
+  border-left: 5px solid var(--edit-primary);
+}
+.editingRecipeIngredientsSection .editingRecipeFormGroup label {
+  color: var(--edit-primary);
+  font-size: 1.1rem;
+}
+
+.editingRecipeInstructionsSection .editingRecipeFormGroup {
+  border-left: 5px solid var(--edit-secondary);
+}
+.editingRecipeInstructionsSection .editingRecipeFormGroup label {
+  color: var(--edit-secondary);
+  font-size: 1.1rem;
+}
+
+.editingRecipeIngredientsSection textarea,
+.editingRecipeInstructionsSection textarea {
+  min-height: 300px;
+  background-color: var(--edit-white);
+}
+
+@media (min-width: 992px) {
+  .editingRecipeDetailsColumns {
+    grid-template-columns: 2fr 3fr;
+    gap: 40px;
+  }
+}
+
+.editingRecipeActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  padding-top: 30px;
+  margin-top: 25px;
+  border-top: 1px solid var(--edit-light-grey);
+}
+
+.editingRecipeCancelButton,
+.editingRecipeSaveButton {
+  padding: 14px 35px;
+  border-radius: var(--edit-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background-color var(--edit-transition),
+    color var(--edit-transition), border-color var(--edit-transition),
+    box-shadow var(--edit-transition), transform var(--edit-transition);
+  min-width: 150px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.editingRecipeCancelButton {
+  background-color: var(--edit-white);
+  color: var(--edit-label);
+  border: 1px solid var(--edit-border);
+}
+
+.editingRecipeCancelButton:hover {
+  background-color: #f8f9fa;
+  border-color: var(--edit-label);
+  color: var(--edit-text);
+}
+
+.editingRecipeSaveButton {
+  background: linear-gradient(
+    145deg,
+    var(--edit-secondary),
+    var(--edit-secondary-dark)
+  );
+  color: var(--edit-white);
+  box-shadow: 0 4px 10px rgba(46, 204, 113, 0.25);
+}
+
+.editingRecipeSaveButton:hover {
+  background: linear-gradient(
+    145deg,
+    var(--edit-secondary-dark),
+    var(--edit-secondary)
+  );
+  box-shadow: 0 6px 15px rgba(46, 204, 113, 0.35);
+  transform: translateY(-2px);
+}
+.editingRecipeSaveButton:active,
+.editingRecipeCancelButton:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.editingRecipeLoadingSpinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(52, 152, 219, 0.2);
+  border-radius: 50%;
+  border-top-color: var(--edit-primary);
+  border-right-color: var(--edit-primary);
+  animation: spin 0.8s linear infinite;
+  margin: 100px auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 767px) {
+  .editingRecipeContainer {
+    padding: 30px 25px;
+    margin: 20px auto;
+  }
+  .editingRecipeHeader h1 {
+    font-size: 2rem;
+  }
+
+  .editingRecipePillsRow {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+  .editingRecipeFormGroup.pill-group {
+    flex-basis: auto;
+  }
+  .editingRecipeFormGroup.pill-group label {
+    position: static;
+    top: auto;
+    left: auto;
+    background: none;
+    padding: 0;
+    margin-bottom: 8px;
+  }
+
+  .editingRecipeDetailsColumns {
+    gap: 25px;
+  }
+  .editingRecipeIngredientsSection textarea,
+  .editingRecipeInstructionsSection textarea {
+    min-height: 200px;
+  }
+
+  .editingRecipeActions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 15px;
+  }
+  .editingRecipeCancelButton,
+  .editingRecipeSaveButton {
+    width: 100%;
+    max-width: none;
+    min-width: auto;
+    padding: 14px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .editingRecipeContainer {
+    padding: 25px 15px;
+  }
+  .editingRecipeHeader h1 {
+    font-size: 1.8rem;
+  }
+  .editingRecipeFormGroup input[type="text"],
+  .editingRecipeFormGroup input[type="number"],
+  .editingRecipeFormGroup input[type="url"],
+  .editingRecipeFormGroup textarea {
+    padding: 12px 15px;
+  }
+  .editingRecipeFormGroup.pill-group input {
+    padding: 10px 12px;
+  }
+  .editingRecipeIngredientsSection .editingRecipeFormGroup,
+  .editingRecipeInstructionsSection .editingRecipeFormGroup {
+    padding: 20px;
+  }
+}

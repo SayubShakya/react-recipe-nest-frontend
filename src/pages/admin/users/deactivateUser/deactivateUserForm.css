@@ -1,0 +1,201 @@
+:root {
+  --modal-overlay-bg: rgba(30, 35, 45, 0.7);
+  --modal-content-bg: linear-gradient(160deg, #ffffff 0%, #f9faff 100%);
+  --modal-shadow: 0 12px 35px rgba(50, 60, 80, 0.15),
+    0 5px 15px rgba(0, 0, 0, 0.1);
+  --modal-radius: 12px;
+  --modal-text-primary: #2c3e50;
+  --modal-text-secondary: #5a6a7a;
+  --modal-text-light: #7f8c9b;
+  --modal-border-color: #e4e9f0;
+
+  --modal-danger-primary: #e74c3c;
+  --modal-danger-secondary: #c0392b;
+
+  --modal-info-primary: #007bff;
+  --modal-info-secondary: #0056b3;
+  --modal-info-text: #ffffff;
+
+  --modal-warning-bg: #fff9e6;
+  --modal-warning-border: #ffe58f;
+  --modal-warning-text: #d48806;
+
+  --modal-transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --modal-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--modal-overlay-bg);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  opacity: 0;
+
+  animation: modal-fade-in var(--modal-transition) forwards;
+}
+
+@keyframes modal-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: var(--modal-content-bg);
+  padding: 35px 40px;
+  border-radius: var(--modal-radius);
+  box-shadow: var(--modal-shadow);
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  font-family: var(--modal-font-family);
+
+  border-top: 4px solid var(--modal-danger-primary);
+
+  animation: modal-scale-up var(--modal-transition);
+}
+
+@keyframes modal-scale-up {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  color: var(--modal-text-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.modal-content p {
+  margin-bottom: 18px;
+  color: var(--modal-text-secondary);
+  line-height: 1.65;
+  font-size: 1rem;
+}
+.modal-content p:last-of-type {
+  margin-bottom: 30px;
+}
+
+.modal-content p strong {
+  color: var(--modal-text-primary);
+  font-weight: 600;
+}
+.modal-content p em {
+  color: var(--modal-text-light);
+  font-style: normal;
+}
+
+.warning-text {
+  font-size: 0.9rem;
+  color: var(--modal-warning-text);
+  background-color: var(--modal-warning-bg);
+  border: 1px solid var(--modal-warning-border);
+  padding: 10px 15px;
+  border-radius: var(--modal-radius-small);
+  margin-top: -15px;
+  margin-bottom: 25px;
+  display: inline-block;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.modal-button {
+  border: none;
+  border-radius: var(--modal-radius);
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  transition: background-color var(--modal-transition),
+    box-shadow var(--modal-transition), transform var(--modal-transition),
+    background var(--modal-transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.modal-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+}
+.modal-button:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.modal-button.deactivate {
+  background: linear-gradient(
+    145deg,
+    var(--modal-danger-primary),
+    var(--modal-danger-secondary)
+  );
+  color: white;
+}
+
+.modal-button.deactivate:hover {
+  background: linear-gradient(
+    145deg,
+    var(--modal-danger-secondary),
+    var(--modal-danger-primary)
+  );
+}
+
+.modal-button.cancel {
+  background: linear-gradient(
+    145deg,
+    var(--modal-info-primary),
+    var(--modal-info-secondary)
+  );
+  color: var(--modal-info-text);
+  border: none;
+}
+
+.modal-button.cancel:hover {
+  background: linear-gradient(
+    145deg,
+    var(--modal-info-secondary),
+    var(--modal-info-primary)
+  );
+}
+
+@media (max-width: 500px) {
+  .modal-content {
+    padding: 30px 25px;
+    max-width: calc(100% - 30px);
+  }
+  .modal-content h2 {
+    font-size: 1.3rem;
+  }
+  .modal-content p {
+    font-size: 0.95rem;
+  }
+  .modal-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .modal-button {
+    width: 100%;
+    padding: 14px 20px;
+  }
+}

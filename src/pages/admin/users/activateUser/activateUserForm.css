@@ -1,0 +1,181 @@
+:root {
+  --modal-activate-overlay-bg: rgba(30, 35, 45, 0.7);
+  --modal-activate-content-bg: linear-gradient(
+    160deg,
+    #ffffff 0%,
+    #f9faff 100%
+  );
+  --modal-activate-shadow: 0 12px 35px rgba(50, 60, 80, 0.15),
+    0 5px 15px rgba(0, 0, 0, 0.1);
+  --modal-activate-radius: 12px;
+  --modal-activate-text-primary: #2c3e50;
+  --modal-activate-text-secondary: #5a6a7a;
+  --modal-activate-text-light: #7f8c9b;
+  --modal-activate-border-color: #e4e9f0;
+  --modal-activate-success-primary: #28a745;
+  --modal-activate-success-secondary: #218838;
+  --modal-activate-cancel-primary: #dc3545;
+  --modal-activate-cancel-secondary: #c82333;
+  --modal-activate-transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --modal-activate-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--modal-activate-overlay-bg);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  opacity: 0;
+
+  animation: modal-activate-fade-in var(--modal-activate-transition) forwards;
+}
+
+@keyframes modal-activate-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: var(--modal-activate-content-bg);
+  padding: 35px 40px;
+  border-radius: var(--modal-activate-radius);
+  box-shadow: var(--modal-activate-shadow);
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  font-family: var(--modal-activate-font-family);
+  border-top: 4px solid var(--modal-activate-success-primary);
+
+  animation: modal-activate-scale-up var(--modal-activate-transition);
+}
+
+@keyframes modal-activate-scale-up {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  color: var(--modal-activate-text-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.modal-content p {
+  margin-bottom: 30px;
+  color: var(--modal-activate-text-secondary);
+  line-height: 1.65;
+  font-size: 1rem;
+}
+
+.modal-content p strong {
+  color: var(--modal-activate-text-primary);
+  font-weight: 600;
+}
+.modal-content p em {
+  color: var(--modal-activate-text-light);
+  font-style: normal;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.modal-button {
+  border: none;
+  border-radius: var(--modal-activate-radius);
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  transition: background-color var(--modal-activate-transition),
+    box-shadow var(--modal-activate-transition),
+    transform var(--modal-activate-transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.modal-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+}
+.modal-button:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.modal-button.activate {
+  background: linear-gradient(
+    145deg,
+    var(--modal-activate-success-primary),
+    var(--modal-activate-success-secondary)
+  );
+  color: white;
+}
+
+.modal-button.activate:hover {
+  background: linear-gradient(
+    145deg,
+    var(--modal-activate-success-secondary),
+    var(--modal-activate-success-primary)
+  );
+}
+
+.modal-button.cancel {
+  background: linear-gradient(
+    145deg,
+    var(--modal-activate-cancel-primary),
+    var(--modal-activate-cancel-secondary)
+  );
+  color: white;
+}
+
+.modal-button.cancel:hover {
+  background: linear-gradient(
+    145deg,
+    var(--modal-activate-cancel-secondary),
+    var(--modal-activate-cancel-primary)
+  );
+}
+
+@media (max-width: 500px) {
+  .modal-content {
+    padding: 30px 25px;
+    max-width: calc(100% - 30px);
+  }
+  .modal-content h2 {
+    font-size: 1.3rem;
+  }
+  .modal-content p {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+  .modal-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .modal-button {
+    width: 100%;
+    padding: 14px 20px;
+  }
+}

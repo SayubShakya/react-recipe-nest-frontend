@@ -1,0 +1,291 @@
+:root {
+  --del-danger-primary: #e74c3c;
+  --del-danger-secondary: #c0392b;
+  --del-danger-bg-light: #fef5f4;
+  --del-text-primary: #2c3e50;
+  --del-text-secondary: #5a6a7a;
+  --del-text-light: #8492a6;
+  --del-border-color: #e1e8f0;
+  --del-bg-main: #ffffff;
+  --del-bg-alt: #f9fafb;
+  --del-bg-light-grey: #f0f4f8;
+  --del-shadow-light: rgba(44, 62, 80, 0.08);
+  --del-shadow-medium: rgba(44, 62, 80, 0.12);
+  --del-radius: 8px;
+  --del-transition: 0.25s ease;
+  --del-font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.delete-recipe-container {
+  max-width: 750px;
+  margin: 40px auto;
+  padding: 35px 40px;
+  background-color: var(--del-bg-main);
+  border-radius: var(--del-radius);
+  box-shadow: 0 8px 25px var(--del-shadow-medium);
+  font-family: var(--del-font-family);
+  border: 1px solid var(--del-border-color);
+}
+
+.delete-recipe-container h1 {
+  text-align: center;
+  color: var(--del-danger-primary);
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--del-border-color);
+  padding-bottom: 20px;
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.delete-recipe-info {
+  border: 1px solid var(--del-border-color);
+  padding: 25px 30px;
+  margin: 30px 0;
+  background-color: var(--del-bg-alt);
+  border-radius: var(--del-radius);
+  position: relative;
+  overflow: hidden;
+}
+
+.delete-recipe-info::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background-color: var(--del-danger-primary);
+}
+
+.delete-recipe-info h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  color: var(--del-danger-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.delete-recipe-info p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  color: var(--del-text-secondary);
+}
+
+.delete-recipe-info strong {
+  color: var(--del-text-primary);
+  font-weight: 600;
+}
+
+.delete-recipe-image-preview {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.delete-recipe-image-preview img {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: var(--del-radius);
+  border: 1px solid var(--del-border-color);
+  display: inline-block;
+  box-shadow: 0 4px 10px var(--del-shadow-light);
+  background-color: var(--del-bg-light-grey);
+}
+
+.delete-recipe-description {
+  margin-top: 18px;
+  font-style: italic;
+  color: var(--del-text-light);
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.delete-warning {
+  border: 1px solid var(--del-danger-secondary);
+  background-color: var(--del-danger-bg-light);
+  color: var(--del-danger-secondary);
+  padding: 20px 25px;
+  margin: 30px 0;
+  border-radius: var(--del-radius);
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  border-left: 5px solid var(--del-danger-primary);
+}
+
+.delete-warning strong {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--del-danger-primary);
+}
+
+.delete-actions {
+  margin-top: 35px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 18px;
+  padding-top: 25px;
+  border-top: 1px solid var(--del-border-color);
+}
+
+.delete-actions button {
+  padding: 12px 30px;
+  border: none;
+  border-radius: var(--del-radius);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color var(--del-transition),
+    color var(--del-transition), border-color var(--del-transition),
+    transform var(--del-transition), box-shadow var(--del-transition);
+  min-width: 130px;
+}
+
+.cancel-button {
+  background-color: var(--del-bg-main);
+  color: var(--del-text-secondary);
+  border: 1px solid var(--del-border-color);
+}
+
+.cancel-button:hover {
+  background-color: var(--del-bg-alt);
+  border-color: var(--del-text-light);
+  color: var(--del-text-primary);
+}
+
+.confirm-delete-button {
+  background: linear-gradient(
+    145deg,
+    var(--del-danger-primary),
+    var(--del-danger-secondary)
+  );
+  color: white;
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.25);
+}
+
+.confirm-delete-button:hover {
+  background: linear-gradient(
+    145deg,
+    var(--del-danger-secondary),
+    var(--del-danger-primary)
+  );
+  box-shadow: 0 6px 15px rgba(231, 76, 60, 0.35);
+  transform: translateY(-2px);
+}
+
+.confirm-delete-button:active,
+.cancel-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px var(--del-shadow-light);
+}
+
+.delete-recipe-loading,
+.delete-recipe-error {
+  text-align: center;
+  padding: 50px 20px;
+  font-size: 1.1rem;
+  color: var(--del-text-secondary);
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.delete-recipe-loading::after {
+  content: "";
+  display: block;
+  margin-top: 20px;
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--del-light-grey);
+  border-top-color: var(--del-danger-primary);
+  border-radius: 50%;
+  animation: spin-del 1s linear infinite;
+}
+
+@keyframes spin-del {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.delete-recipe-error {
+  border: 1px solid var(--del-danger-secondary);
+  background-color: var(--del-danger-bg-light);
+  color: var(--del-danger-secondary);
+  max-width: 550px;
+  margin: 40px auto;
+  border-radius: var(--del-radius);
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(231, 76, 60, 0.1);
+}
+.delete-recipe-error p:first-child {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+  color: var(--del-danger-primary);
+}
+.delete-recipe-error button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: var(--del-danger-primary);
+  color: white;
+  border: none;
+  border-radius: var(--del-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--del-transition);
+}
+.delete-recipe-error button:hover {
+  background-color: var(--del-danger-secondary);
+}
+
+@media (max-width: 768px) {
+  .delete-recipe-container {
+    margin: 30px 15px;
+    padding: 25px 30px;
+  }
+  .delete-recipe-info {
+    padding: 20px;
+  }
+  .delete-warning {
+    padding: 15px 20px;
+  }
+  .delete-actions {
+    flex-direction: column-reverse;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .delete-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .delete-recipe-container {
+    padding: 20px;
+  }
+  .delete-recipe-container h1 {
+    font-size: 1.8rem;
+  }
+  .delete-recipe-info h2 {
+    font-size: 1.3rem;
+  }
+  .delete-recipe-image-preview img {
+    max-height: 200px;
+  }
+  .delete-actions button {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+  .delete-recipe-error {
+    padding: 20px;
+    margin: 30px 15px;
+  }
+  .delete-recipe-error p:first-child {
+    font-size: 1.1rem;
+  }
+}

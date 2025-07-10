@@ -1,0 +1,270 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #fff;
+}
+
+.userLogin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #222;
+  padding: 20px;
+
+  background-image: url("LoginBackgroundPicture.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.userLogin-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.userLogin-card {
+  display: flex;
+  width: 800px;
+  max-width: 100%;
+  height: 500px;
+  background-color: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 2;
+}
+
+.userLogin-left {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+}
+
+.userLogin-image {
+  position: absolute;
+  top: 0;
+  left: -30%;
+  width: 250%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.userLogin-right {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.userLogin-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.userLogin-logo {
+  width: 70px;
+  height: 50px;
+  margin-bottom: 15px;
+}
+
+.userLogin-logoImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.userLogin-header h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #333;
+  margin: 10px 0 0;
+}
+
+.userLogin-error {
+  color: #ff0000;
+  background-color: #ffe6e6;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.userLogin-formGroup {
+  margin-bottom: 15px;
+}
+
+.userLogin-formGroup label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.userLogin-formGroup input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.userLogin-remember {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+
+.userLogin-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.userLogin-checkbox input {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.userLogin-checkbox label {
+  cursor: pointer;
+  color: #666;
+}
+
+.userLogin-forgot {
+  color: #8e2450;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.userLogin-forgot:hover {
+  text-decoration: underline;
+}
+
+.userLogin-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #8e2450;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.userLogin-button:hover {
+  background-color: #7a1f45;
+}
+
+.userLogin-footer {
+  margin-top: auto;
+  text-align: center;
+  font-size: 13px;
+}
+
+.userLogin-create {
+  color: #8e2450;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.userLogin-create:hover {
+  text-decoration: underline;
+}
+
+.userLogin-social {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+  margin-top: 7px;
+}
+
+.userLogin-socialIcon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #fff;
+  color: #555;
+  border: 2px solid #ddd;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.userLogin-socialIcon:hover {
+  background-color: #ff9800;
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.userLogin-socialIcon svg {
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+
+.userLogin-socialIcon:hover svg {
+  transform: rotate(15deg);
+}
+
+@media (max-width: 768px) {
+  .userLogin-social {
+    gap: 15px;
+  }
+
+  .userLogin-socialIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .userLogin-socialIcon svg {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .userLogin-card {
+    flex-direction: column;
+    height: auto;
+    max-width: 90%;
+  }
+
+  .userLogin-left {
+    display: none;
+  }
+
+  .userLogin-right {
+    padding: 25px;
+  }
+}

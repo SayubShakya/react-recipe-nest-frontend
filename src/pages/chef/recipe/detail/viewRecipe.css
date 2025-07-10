@@ -1,0 +1,297 @@
+:root {
+  --primary-accent: #ff7f50;
+  --secondary-accent: #4682b4;
+  --text-dark: #2c3e50;
+  --text-light: #555;
+  --bg-main: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-tag: #ffe4d6;
+  --tag-text: #d95f26;
+  --border-light: #eef2f7;
+  --error-bg: #fff0f1;
+  --error-border: #e74c3c;
+  --error-text: #c0392b;
+  --button-red: #e74c3c;
+  --button-red-hover: #c0392b;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --shadow-stronger-color: rgba(0, 0, 0, 0.12);
+}
+
+.view-recipe-container {
+  max-width: 950px;
+  margin: 40px auto;
+  padding: 40px;
+  background: linear-gradient(145deg, var(--bg-card) 0%, #fdfdfd 100%);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px var(--shadow-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.view-recipe-container::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(255, 127, 80, 0.1), transparent 70%);
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.view-recipe-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.view-recipe-container h1 {
+  text-align: center;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-shadow: 1px 1px 2px var(--shadow-color);
+}
+
+.recipe-meta-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.recipe-meta-info span {
+  background-color: var(--bg-tag);
+  color: var(--tag-text);
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 5px;
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 4px rgba(217, 95, 38, 0.1);
+}
+
+.recipe-meta-info span:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(217, 95, 38, 0.2);
+}
+
+.title-underline {
+  width: 80px;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-accent),
+    var(--secondary-accent)
+  );
+  margin: 20px auto 35px auto;
+  border-radius: 3px;
+}
+
+.recipe-image-container {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.recipe-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 500px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px var(--shadow-stronger-color);
+  border: 3px solid white;
+  outline: 1px solid var(--border-light);
+}
+
+.recipe-description,
+.ingredients-section,
+.instructions-section {
+  margin-bottom: 35px;
+}
+
+.recipe-description h3,
+.ingredients-section h3,
+.instructions-section h3 {
+  color: var(--secondary-accent);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid;
+
+  border-image: linear-gradient(
+      to right,
+      var(--secondary-accent),
+      transparent 80%
+    )
+    1;
+}
+
+.recipe-description p {
+  line-height: 1.8;
+  color: var(--text-light);
+  text-align: justify;
+  font-size: 1.05rem;
+}
+
+.recipe-details-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 45px;
+}
+
+@media (min-width: 768px) {
+  .recipe-details-columns {
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+  }
+}
+
+.ingredients-section ul,
+.instructions-section ol {
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+  color: var(--text-light);
+}
+
+.ingredients-section li,
+.instructions-section li {
+  margin-bottom: 12px;
+  padding-left: 30px;
+  position: relative;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.ingredients-section li::before {
+  content: "🥕";
+  position: absolute;
+  left: 0;
+  top: 0px;
+  color: var(--primary-accent);
+  font-size: 1.1rem;
+}
+
+.instructions-section li::before {
+  content: counter(list-item);
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: var(--secondary-accent);
+  color: white;
+  font-weight: bold;
+  font-size: 0.8rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+}
+
+.back-button {
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.back-button-red {
+  background: linear-gradient(145deg, var(--button-red), #c0392b);
+  color: white;
+  box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+}
+
+.back-button-red:hover {
+  background: linear-gradient(145deg, #c0392b, var(--button-red));
+  box-shadow: 0 6px 15px rgba(231, 76, 60, 0.4);
+  transform: translateY(-2px);
+}
+
+.back-button-red:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(231, 76, 60, 0.3);
+}
+
+.top-back-button {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+}
+
+.bottom-back-button {
+  display: block;
+  margin: 40px auto 0;
+  width: fit-content;
+}
+
+.view-recipe-loading,
+.view-recipe-error {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 1.2rem;
+  color: var(--text-light);
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-main);
+  border-radius: 10px;
+}
+
+.view-recipe-loading::after {
+  content: "";
+  display: block;
+  margin-top: 20px;
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-light);
+  border-top-color: var(--primary-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.view-recipe-error {
+  border: 2px solid var(--error-border);
+  background-color: var(--error-bg);
+  color: var(--error-text);
+  max-width: 650px;
+  margin: 40px auto;
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 4px 10px rgba(231, 76, 60, 0.1);
+}
+
+.view-recipe-error h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--error-text);
+  font-size: 1.8rem;
+}
+.view-recipe-error button {
+  margin-top: 25px;
+}
