@@ -44,4 +44,4 @@ This is the official frontend for the RecipeNest application, built with **React
     npm run dev
     ``
 
-3.  Open your browser and navigate to `http://localhost:5173` (or the address provided by Vite).
+3.  Open your browser and navigate to `http://localhost:5173`
